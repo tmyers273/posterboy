@@ -10,10 +10,6 @@ class Posterboy {
 
     public static function post($data, $endpoint) //@todo add user agent support and header support
     {
-        if (! is_string($data)) {
-            $data = json_encode($data);
-        }
-
         $job = (new PosterboyPostJob($data, $endpoint))->onQueue(config('posterboy.queue'));
 
         return Bus::dispatch($job);

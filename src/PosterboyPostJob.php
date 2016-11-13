@@ -53,7 +53,7 @@ class PosterboyPostJob implements ShouldQueue
 
         echo("| Starting post...");
         $result = $guzzler->request('POST', $this->endpoint, [
-            'json' => ['data' => $this->data]
+            'form_params' => $this->data
         ]);
         echo(" done\n");
 
